@@ -28,6 +28,11 @@ public class PersonController {
         return personService.getPersonByName(name);
     }
 
+    @GetMapping("getPersonByAge/{age}")
+    public List<Person> getPersonByAge(@PathVariable Integer age) {
+        return personService.getPersonByAge(age);
+    }
+
     @DeleteMapping("/deletePerson")
     public void deletePerson(@RequestBody Person person) {
         personService.deletePerson(person);

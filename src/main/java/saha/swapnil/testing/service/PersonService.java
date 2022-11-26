@@ -27,6 +27,10 @@ public class PersonService {
         return personRepository.findByName(name);
     }
 
+    public List<Person> getPersonByAge(Integer age) {
+        return personRepository.findByAge(age);
+    }
+
     public void deletePerson(Person person) {
         personRepository.delete(person);
     }

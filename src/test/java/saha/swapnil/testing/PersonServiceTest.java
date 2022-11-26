@@ -45,7 +45,7 @@ public class PersonServiceTest {
     private List<Person> getDummyPersonList(int n) {
         List<Person> personList = new ArrayList<>();
         for(int i = 0; i < n; i++) {
-            Person person = new Person("Person_" + i, i + 10);
+            Person person = new Person("Person", 10);
             personList.add(person);
         }
         return personList;
@@ -79,6 +79,24 @@ public class PersonServiceTest {
         String name = "Person";
         when(personRepository.findByName(name)).thenReturn(getDummyPersonList(total));
         assertEquals(total + 2, personService.getPersonByName(name).size());
+    }
+
+    // TODO
+    /*
+     * Follow getPersonByName_PassTest() method and implement the following one for age
+     */
+    @Test
+    public void getPersonByAge_PassTest() {
+
+    }
+
+    // TODO
+    /*
+     * Follow getPersonByName_FailTest() method and implement the following one for age
+     */
+    @Test
+    public void getPersonByAge_FailTest() {
+
     }
 
     @Test
