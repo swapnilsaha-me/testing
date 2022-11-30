@@ -1,6 +1,8 @@
 package saha.swapnil.testing.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import saha.swapnil.testing.model.Person;
 import saha.swapnil.testing.service.PersonService;
@@ -14,23 +16,23 @@ public class PersonController {
     private PersonService personService;
 
     @PostMapping("/createPerson")
-    public Person createPerson(@RequestBody Person person) {
-        return personService.createPerson(person);
+    public ResponseEntity<Person> createPerson(@RequestBody Person person) {
+        return new ResponseEntity<>(personService.createPerson(person), HttpStatus.OK);
     }
 
     @GetMapping("/getAllPerson")
-    public List<Person> getAllPerson() {
-        return personService.getAllPerson();
+    public ResponseEntity<List<Person>> getAllPerson() {
+        return new ResponseEntity<>(personService.getAllPerson(), HttpStatus.OK);
     }
 
-    @GetMapping("getPersonByName/{name}")
-    public List<Person> getPersonByName(@PathVariable String name) {
-        return personService.getPersonByName(name);
+    @GetMapping("/getPersonByName/{name}")
+    public ResponseEntity<List<Person>> getPersonByName(@PathVariable String name) {
+        return new ResponseEntity<>(personService.getPersonByName(name), HttpStatus.OK);
     }
 
-    @GetMapping("getPersonByAge/{age}")
-    public List<Person> getPersonByAge(@PathVariable Integer age) {
-        return personService.getPersonByAge(age);
+    @GetMapping("/getPersonByAge")
+    public ResponseEntity<List<Person>> getPersonByAge(@RequestParam(value = "age") Integer age) {
+        return new ResponseEntity<>(personService.getPersonByAge(age), HttpStatus.OK);
     }
 
     @DeleteMapping("/deletePerson")

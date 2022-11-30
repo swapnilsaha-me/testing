@@ -6,7 +6,7 @@ import saha.swapnil.testing.model.Person;
 
 import java.util.List;
 
-@Repository
+//@Repository
 public interface PersonRepository extends JpaRepository<Person, Long> {
     List<Person> findByName(String name);
 
